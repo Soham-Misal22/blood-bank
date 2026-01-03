@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Hemo Hub</title>
+   <link rel="HTML" href="Donor.html">
+   <link rel="HTML" href="Receiver.html">
+   <link rel="HTML" href="BloodAvailability.html">
+   <link rel="HTML" href="LifeSavers.html">
+   <link rel="HTML" href="About.html">
+   <link rel="HTML" href="Index.html">
+   <link rel="stylesheet" href="Styles.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   <style>
+    :root {
+      --primary-color: #e53935;
+      --primary-dark: #c62828;
+      --secondary-color: #f5f5f5;
+      --text-dark: #333333;
+      --text-light: #ffffff;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text-dark);
+      background-color: #f9f9f9;
+    }
+    
+    .navbar {
+      background-color: var(--primary-color) !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 12px 20px;
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: white !important;
+    }
+    
+    .navbar-dark .navbar-nav .nav-link {
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    
+    .navbar-dark .navbar-nav .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #e53935 0%, #e35d5b 100%);
+      color: white;
+      padding: 40px 0;
+      border-radius: 0 0 20px 20px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    
+    .page-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    
+    .page-header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .table-container {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      padding: 25px;
+      margin-bottom: 40px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    
+    th {
+      background-color: rgba(229, 57, 53, 0.1);
+      color: var(--primary-color);
+      font-weight: 600;
+      text-align: left;
+      padding: 12px 15px;
+      border: 1px solid #e0e0e0;
+    }
+    
+    td {
+      padding: 12px 15px;
+      border: 1px solid #e0e0e0;
+      transition: all 0.2s;
+    }
+    
+    tr:hover td {
+      background-color: rgba(229, 57, 53, 0.05);
+    }
+    
+    .section-title {
+      position: relative;
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 25px;
+      display: inline-block;
+    }
+    
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 70%;
+      height: 3px;
+      background-color: var(--primary-color);
+      margin: 8px auto 0;
+    }
+    
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 0 0;
+      margin-top: 60px;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+    
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-section a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-section a:hover {
+      color: var(--primary-color);
+    }
+    
+    .copywrites {
+      background-color: #222;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 20px;
+    }
+    
+    .blood-group {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 30px;
+      font-weight: 600;
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(229, 57, 53, 0.3);
+    }
+    
+    /* Responsive table */
+    @media only screen and (max-width: 768px) {
+      .table-responsive {
+        overflow-x: auto;
+      }
+    }
+   </style>
+</head>
+<body>
+   <!-- Navigation Bar -->
+   <nav class="navbar navbar-expand-md navbar-dark">
+       <div class="container">
+           <a class="navbar-brand" href="Index.html">
+               <i class="fas fa-heartbeat mr-2"></i>Hemo Hub
+           </a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+               <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="collapsibleNavbar">
+               <ul class="navbar-nav ml-auto">
+                   <li class="nav-item">
+                       <a class="nav-link" href="Index.html"><i class="fas fa-home mr-1"></i> Home</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="Donor.html"><i class="fas fa-hand-holding-heart mr-1"></i> Donor</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="BloodAvailability.html"><i class="fas fa-tint mr-1"></i> Blood Availability</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="Receiver.html"><i class="fas fa-user mr-1"></i> Receiver</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="About.html"><i class="fas fa-info-circle mr-1"></i> About</a>
+                   </li>
+               </ul>
+           </div>
+       </div>
+   </nav>
+
+   <!-- Page Header -->
+   <section class="page-header">
+       <div class="container">
+           <h1><i class="fas fa-users mr-2"></i>Our Life Savers</h1>
+           <p>Meet our dedicated blood donors who regularly contribute to saving lives through their generous donations.</p>
+       </div>
+   </section>
+
+   <!-- Table Section -->
+   <div class="container">
+       <div class="table-container">
+           <h2 class="section-title text-center"><i class="fas fa-table mr-2"></i>Blood Donation Records</h2>
+           <div class="table-responsive">
+               <table class="table">
+                   <thead>
+                       <tr>
+                           <th><i class="fas fa-user mr-2"></i>Names</th>
+                           <th><i class="fas fa-tint mr-2"></i>Blood Group</th>
+                           <th><i class="fas fa-chart-bar mr-2"></i>Units Donated</th>
+                           <th><i class="fas fa-envelope mr-2"></i>Email</th>
+                           <th><i class="fas fa-phone mr-2"></i>Contact</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       <tr>
+                           <td>Aarif</td>
+                           <td><span class="blood-group">B+</span></td>
+                           <td>18</td>
+                           <td>Aarif@gmail.com</td>
+                           <td>91239875</td>
+                       </tr>
+                       <tr>
+                           <td>Gershom</td>
+                           <td><span class="blood-group">O-</span></td>
+                           <td>14</td>
+                           <td>Gershom@gmail.com</td>
+                           <td>96070722</td>
+                       </tr>
+                       <tr>
+                           <td>Ashok</td>
+                           <td><span class="blood-group">B-</span></td>
+                           <td>13</td>
+                           <td>Ashok@gmail.com</td>
+                           <td>96670702</td>
+                       </tr>
+                       <tr>
+                           <td>Manoj</td>
+                           <td><span class="blood-group">O+</span></td>
+                           <td>12</td>
+                           <td>Manoj@gmail.com</td>
+                           <td>95577221</td>
+                       </tr>
+                       <tr>
+                           <td>Shiva</td>
+                           <td><span class="blood-group">O-</span></td>
+                           <td>10</td>
+                           <td>Shiva@gmail.com</td>
+                           <td>93377221</td>
+                       </tr>
+                       <tr>
+                           <td>Annapurna</td>
+                           <td><span class="blood-group">A+</span></td>
+                           <td>13</td>
+                           <td>Annapurna@gmail.com</td>
+                           <td>91234221</td>
+                       </tr>
+                       <tr>
+                           <td>Chandrakala</td>
+                           <td><span class="blood-group">AB-</span></td>
+                           <td>11</td>
+                           <td>chandrakala@gmail.com</td>
+                           <td>98752321</td>
+                       </tr>
+                       <tr>
+                           <td>Laxmi Narayana</td>
+                           <td><span class="blood-group">B-</span></td>
+                           <td>10</td>
+                           <td>LaxmiNaryana@gmail.com</td>
+                           <td>97845221</td>
+                       </tr>
+                       <tr>
+                           <td>Nikitha</td>
+                           <td><span class="blood-group">A-</span></td>
+                           <td>10</td>
+                           <td>Ala@gmail.com</td>
+                           <td>90107720</td>
+                       </tr>
+                       <tr>
+                           <td>Sohail</td>
+                           <td><span class="blood-group">AB+</span></td>
+                           <td>13</td>
+                           <td>sohail@gmail.com</td>
+                           <td>976047221</td>
+                       </tr>
+                       <tr>
+                           <td>Chandu</td>
+                           <td><span class="blood-group">AB-</span></td>
+                           <td>13</td>
+                           <td>chandu@gmail.com</td>
+                           <td>976047221</td>
+                       </tr>
+                       <tr>
+                           <td>Navya</td>
+                           <td><span class="blood-group">AB-</span></td>
+                           <td>11</td>
+                           <td>Navya@gmail.com</td>
+                           <td>976747220</td>
+                       </tr>
+                       <tr>
+                           <td>E Thiru</td>
+                           <td><span class="blood-group">AB+</span></td>
+                           <td>11</td>
+                           <td>E.thiru@gmail.com</td>
+                           <td>97601721</td>
+                       </tr>
+                       <tr>
+                           <td>Anush</td>
+                           <td><span class="blood-group">B-</span></td>
+                           <td>10</td>
+                           <td>Anush@gmail.com</td>
+                           <td>91614721</td>
+                       </tr>
+                       <tr>
+                           <td>Vishal</td>
+                           <td><span class="blood-group">B+</span></td>
+                           <td>10</td>
+                           <td>vishal@gmail.com</td>
+                           <td>91604722</td>
+                       </tr>
+                   </tbody>
+               </table>
+           </div>
+       </div>
+       
+       <div class="text-center mt-4 mb-5">
+           <a href="Donor.html" class="btn btn-primary btn-lg mr-3">
+               <i class="fas fa-heart mr-1"></i> Become a Donor
+           </a>
+           <a href="BloodAvailability.html" class="btn btn-outline-danger btn-lg">
+               <i class="fas fa-search mr-1"></i> Check Blood Availability
+           </a>
+       </div>
+   </div>
+
+   <!-- Footer -->
+   <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h2>About Us</h2>
+                <p>Hemo Hub is dedicated to connecting blood donors with those in need, ensuring timely access to safe and life-saving blood</p>
+                <a href="About.html" class="btn btn-outline-light btn-sm mt-2">Learn More</a>
+            </div>
+            <div class="footer-section">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="Donor.html">Become a Donor</a></li>
+                    <li><a href="BloodAvailability.html">Find Blood</a></li>
+                    <li><a href="Receiver.html">Request Blood</a></li>
+                    <li><a href="LifeSavers.html">Our Life Savers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h2>Contact Us</h2>
+                <p><i class="fas fa-map-marker-alt mr-2"></i>VIT,Bibwewadi,Pune,Maharashtra 411037</p>
+                <p><i class="fas fa-envelope mr-2"></i>hemohub@vit.edu</p>
+                <p><i class="fas fa-phone mr-2"></i>+91 87676 48894</p>
+            </div>
+            <div class="footer-section">
+                <h2>Connect With Us</h2>
+                <p>Follow us on social media for updates on blood donation camps and success stories.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copywrites">
+            <p>© 2025 Hemo Hub. Connecting Donors, Saving Lives.</p>
+        </div>
+   </footer>
+
+   <!-- Scripts -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>

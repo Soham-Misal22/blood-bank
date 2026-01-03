@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemo Hub - Blood Receiver</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #e53935;
+            --primary-dark: #c62828;
+            --secondary-color: #f5f5f5;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background-color: #f9f9f9;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 12px 20px;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+        
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .navbar-dark .navbar-nav .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #e53935 0%, #e35d5b 100%);
+            color: white;
+            padding: 40px 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .section-title h3 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .section-title h3:after {
+            content: '';
+            display: block;
+            width: 70%;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 8px auto 0;
+        }
+        
+        .blood-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .blood-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .blood-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .blood-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .blood-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .form-section {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .form-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 5px 5px;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(229, 57, 53, 0.25);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 20px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(229, 57, 53, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            padding: 10px 20px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+        }
+        
+        .alert {
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .alert-info {
+            background-color: rgba(41, 98, 255, 0.1);
+            color: #0039cb;
+            border-left: 4px solid #2962ff;
+        }
+        
+        .alert-danger {
+            background-color: rgba(229, 57, 53, 0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .badge-danger {
+            background-color: var(--primary-color);
+            font-size: 0.9rem;
+            padding: 6px 10px;
+            border-radius: 4px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+        
+        .copywrites {
+            background-color: #222;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+        
+        @media only screen and (max-width: 768px) {
+            .blood-table {
+                display: block;
+                overflow-x: auto;
+            }
+            .page-header {
+                padding: 30px 0;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+    <script>
+        function validateEnhancedForm() {
+            var fullName = document.forms["receiverForm"]["full_name"].value;
+            var email = document.forms["receiverForm"]["email"].value;
+            var contact = document.forms["receiverForm"]["contact"].value;
+            var dob = document.forms["receiverForm"]["dob"].value;
+            var gender = document.forms["receiverForm"]["gender"].value;
+            var bloodGroup = document.forms["receiverForm"]["blood_group"].value;
+            var age = document.forms["receiverForm"]["age"].value;
+            var hospitalName = document.forms["receiverForm"]["hospital_name"].value;
+
+            var productSelected = false;
+            var productCheckboxes = document.getElementsByName("blood_products");
+            for (var i = 0; i < productCheckboxes.length; i++) {
+                if (productCheckboxes[i].checked) {
+                    productSelected = true;
+                    break;
+                }
+            }
+            var quantity = document.forms["receiverForm"]["quantity"].value;
+            var requirementDateTime = document.forms["receiverForm"]["requirement_datetime"].value;
+
+            var consultantName = document.forms["receiverForm"]["consultant_name"].value;
+            var registrationNumber = document.forms["receiverForm"]["registration_number"].value;
+            var medicalOfficer = document.forms["receiverForm"]["medical_officer"].value;
+            var hospitalAddress = document.forms["receiverForm"]["hospital_address"].value;
+
+            if (fullName == "" || email == "" || contact == "" || dob == "" || 
+                gender == "" || bloodGroup == "" || age == "" || hospitalName == "") {
+                alert("Please fill out all patient details fields.");
+                return false;
+            }
+
+            if (!productSelected || quantity == "" || requirementDateTime == "") {
+                alert("Please select blood products and specify quantity and requirement time.");
+                return false;
+            }
+
+            if (consultantName == "" || registrationNumber == "" || 
+                medicalOfficer == "" || hospitalAddress == "") {
+                alert("Please complete all doctor's consent details.");
+                return false;
+            }
+
+            alert("Your blood request has been submitted successfully. Our team will review and contact you shortly.");
+            return true;
+        }
+
+        function calculateAge() {
+            var dob = document.getElementById('dob').value;
+            var today = new Date();
+            var birthDate = new Date(dob);
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            document.getElementById('age').value = age;
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="Index.html">
+                <i class="fas fa-heartbeat mr-2"></i>Hemo Hub
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Index.html"><i class="fas fa-home mr-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Donor.html"><i class="fas fa-hand-holding-heart mr-1"></i> Donor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="BloodAvailability.html"><i class="fas fa-tint mr-1"></i> Blood Availability</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Receiver.html"><i class="fas fa-user mr-1"></i> Receiver</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="About.html"><i class="fas fa-info-circle mr-1"></i> About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-user mr-2"></i>Blood Receiver</h1>
+            <p>Request blood for those in need. Our system helps connect patients with the right blood donors quickly and efficiently.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="section-title">
+            <h3><i class="fas fa-exchange-alt mr-2"></i>Blood Compatibility Chart</h3>
+            <p class="text-muted">Understanding blood type compatibility is crucial for safe transfusions. Check the table below to see which blood types are compatible with yours.</p>
+        </div>
+        <div class="form-container">
+            <div class="table-responsive">
+                <table class="blood-table">
+                    <thead>
+                        <tr>
+                            <th>Blood Type</th>
+                            <th>Can Donate To</th>
+                            <th>Can Receive From</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge badge-danger">A+</span></td>
+                            <td>A+, AB+</td>
+                            <td>A+, A-, O+, O-</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-danger">O+</span></td>
+                            <td>O+, A+, B+, AB+</td>
+                            <td>O+, O-</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-danger">B+</span></td>
+                            <td>B+, AB+</td>
+                            <td>B+, B-, O+, O-</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-danger">AB+</span></td>
+                            <td>AB+ only</td>
+                            <td>Everyone (Universal Recipient)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-danger">A-</span></td>
+                            <td>A+, A-, AB+, AB-</td>
+                            <td>A-, O-</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-danger">O-</span></td>
+                            <td>Everyone (Universal Donor)</td>
+                            <td>O- only</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-danger">B-</span></td>
+                            <td>B+, B-, AB+, AB-</td>
+                            <td>B-, O-</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-danger">AB-</span></td>
+                            <td>AB+, AB-</td>
+                            <td>AB-, A-, B-, O-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="alert alert-info mt-4" role="alert">
+                <i class="fas fa-info-circle mr-2"></i> O- is the universal donor (can donate to any blood type), while AB+ is the universal recipient (can receive from any blood type).
+            </div>
+        </div>
+
+        <div class="section-title">
+            <h3><i class="fas fa-clipboard-list mr-2"></i>Comprehensive Blood Request Form</h3>
+            <p class="text-muted">Provide detailed information to request blood for patients in need</p>
+        </div>
+        <div class="form-container">
+            <form name="receiverForm" onsubmit="return validateEnhancedForm()" method="post" enctype="multipart/form-data">
+                <div class="form-section">
+                    <h4><i class="fas fa-user-injured mr-2"></i>Patient Details</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="full_name"><i class="fas fa-user mr-1"></i> Full Name:</label>
+                                <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Enter patient's full name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email"><i class="fas fa-envelope mr-1"></i> Email Address:</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="contact"><i class="fas fa-phone mr-1"></i> Contact Number:</label>
+                                <input type="tel" class="form-control" id="contact" name="contact" placeholder="Enter contact number" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="dob"><i class="fas fa-calendar mr-1"></i> Date of Birth:</label>
+                                <input type="date" class="form-control" id="dob" name="dob" onchange="calculateAge()" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="gender"><i class="fas fa-venus-mars mr-1"></i> Gender:</label>
+                                <select class="form-control" id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="blood_group"><i class="fas fa-tint mr-1"></i> Blood Group:</label>
+                                <select class="form-control" id="blood_group" name="blood_group" required>
+                                    <option value="">Select Blood Group</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="age"><i class="fas fa-birthday-cake mr-1"></i> Age:</label>
+                                <input type="number" class="form-control" id="age" name="age" readonly required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hospital_name"><i class="fas fa-hospital mr-1"></i> Hospital Name:</label>
+                        <input type="text" class="form-control" id="hospital_name" name="hospital_name" placeholder="Enter hospital name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="diagnosis"><i class="fas fa-notes-medical mr-1"></i> Diagnosis:</label>
+                        <textarea class="form-control" id="diagnosis" name="diagnosis" rows="3" placeholder="Brief description of patient's medical condition"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h4><i class="fas fa-vial mr-2"></i>Blood Component Request</h4>
+                    <div class="form-group">
+                        <label><i class="fas fa-check-square mr-1"></i> Select Blood Products:</label>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="pc" name="blood_products" value="PC">
+                                    <label class="form-check-label" for="pc">Packed Cells (PC)</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ffp" name="blood_products" value="FFP">
+                                    <label class="form-check-label" for="ffp">Fresh Frozen Plasma (FFP)</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="rdp" name="blood_products" value="RDP">
+                                    <label class="form-check-label" for="rdp">Random Donor Platelets (RDP)</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="sdp" name="blood_products" value="SDP">
+                                    <label class="form-check-label" for="sdp">Single Donor Platelets (SDP)</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="cryo" name="blood_products" value="Cryoprecipitates">
+                                    <label class="form-check-label" for="cryo">Cryoprecipitates</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="other" name="blood_products" value="Other">
+                                    <label class="form-check-label" for="other">Other</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="quantity"><i class="fas fa-sort-numeric-up mr-1"></i> Quantity (in units):</label>
+                                <input type="number" class="form-control" id="quantity" name="quantity" min="1" placeholder="Enter required units" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="requirement_datetime"><i class="fas fa-clock mr-1"></i> Date & Time of Requirement:</label>
+                                <input type="datetime-local" class="form-control" id="requirement_datetime" name="requirement_datetime" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h4><i class="fas fa-file-medical-alt mr-2"></i>Medical History</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="previous_transfusions"><i class="fas fa-history mr-1"></i> Number of Previous Transfusions:</label>
+                                <input type="number" class="form-control" id="previous_transfusions" name="previous_transfusions" min="0">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="pregnancy_history"><i class="fas fa-baby mr-1"></i> Pregnancy History (Number of Pregnancies):</label>
+                                <input type="number" class="form-control" id="pregnancy_history" name="pregnancy_history" min="0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="transfusion_reactions"><i class="fas fa-notes-medical mr-1"></i> Previous Transfusion Reactions:</label>
+                        <textarea class="form-control" id="transfusion_reactions" name="transfusion_reactions" rows="3" placeholder="Describe any previous transfusion reactions"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h4><i class="fas fa-user-md mr-2"></i>Doctor's Consent</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="consultant_name"><i class="fas fa-user-md mr-1"></i> Consultant Name:</label>
+                                <input type="text" class="form-control" id="consultant_name" name="consultant_name" placeholder="Enter consultant name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="registration_number"><i class="fas fa-id-card mr-1"></i> Registration Number:</label>
+                                <input type="text" class="form-control" id="registration_number" name="registration_number" placeholder="Enter registration number" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="medical_officer"><i class="fas fa-user-nurse mr-1"></i> Medical Officer Details:</label>
+                                <input type="text" class="form-control" id="medical_officer" name="medical_officer" placeholder="Enter medical officer details" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="doctor_signature"><i class="fas fa-signature mr-1"></i> Doctor's Signature:</label>
+                                <input type="file" class="form-control-file" id="doctor_signature" name="doctor_signature" accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hospital_address"><i class="fas fa-map-marker-alt mr-1"></i> Hospital Address:</label>
+                        <textarea class="form-control" id="hospital_address" name="hospital_address" rows="3" placeholder="Enter hospital address" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h4><i class="fas fa-signature mr-2"></i>Confirmation</h4>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="terms" required>
+                        <label class="form-check-label" for="terms">I confirm that all information provided is accurate and complete.</label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary mr-3">
+                            <i class="fas fa-paper-plane mr-1"></i> Submit Request
+                        </button>
+                        <button type="reset" class="btn btn-secondary">
+                            <i class="fas fa-redo mr-1"></i> Reset Form
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-container">
+            <h4><i class="fas fa-ambulance mr-2"></i>Emergency Contact</h4>
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading"><i class="fas fa-exclamation-triangle mr-2"></i>Need Blood Urgently?</h4>
+                <p>For immediate blood requirements, please contact our 24/7 helpline:</p>
+                <h3 class="mb-0"><i class="fas fa-phone-alt mr-2"></i>+91 87676 48894</h3>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h2>About Us</h2>
+                <p>Hemo Hub is dedicated to connecting blood donors with those in need, ensuring timely access to safe and life-saving blood</p>
+                <a href="About.html" class="btn btn-outline-light btn-sm mt-2">Learn More</a>
+            </div>
+            <div class="footer-section">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="Donor.html">Become a Donor</a></li>
+                    <li><a href="BloodAvailability.html">Find Blood</a></li>
+                    <li><a href="Receiver.html">Request Blood</a></li>
+                    <li><a href="LifeSavers.html">Our Life Savers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h2>Contact Us</h2>
+                <p><i class="fas fa-map-marker-alt mr-2"></i>VIT,Bibwewadi,Pune,Maharashtra 411037</p>
+                <p><i class="fas fa-envelope mr-2"></i>hemohub@vit.edu</p>
+                <p><i class="fas fa-phone mr-2"></i>+91 87676 48894</p>
+            </div>
+            <div class="footer-section">
+                <h2>Connect With Us</h2>
+                <p>Follow us on social media for updates on blood donation camps and success stories.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copywrites">
+            <p>© 2025 Hemo Hub. Connecting Donors, Saving Lives.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>

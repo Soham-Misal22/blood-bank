@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>About Us - Hemo Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #e53935;
+            --primary-dark: #c62828;
+            --secondary-color: #f5f5f5;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background-color: #f9f9f9;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 12px 20px;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+        
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .navbar-dark .navbar-nav .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #e53935 0%, #e35d5b 100%);
+            color: white;
+            padding: 40px 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .section-title h3 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .section-title h3:after {
+            content: '';
+            display: block;
+            width: 70%;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 8px auto 0;
+        }
+        
+        .info-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 5px 5px;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(229, 57, 53, 0.25);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 20px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(229, 57, 53, 0.3);
+        }
+        
+        .team-member {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .team-member img:hover {
+            transform: scale(1.05);
+        }
+        
+        .team-member h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+        
+        .copywrites {
+            background-color: #222;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="Index.html">
+                <i class="fas fa-heartbeat mr-2"></i>Hemo Hub
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Index.html"><i class="fas fa-home mr-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Donor.html"><i class="fas fa-hand-holding-heart mr-1"></i> Donor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="BloodAvailability.html"><i class="fas fa-tint mr-1"></i> Blood Availability</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Receiver.html"><i class="fas fa-user mr-1"></i> Receiver</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="About.html"><i class="fas fa-info-circle mr-1"></i> About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-info-circle mr-2"></i>About Hemo Hub</h1>
+            <p>Bridging the gap between blood donors and those in need, one drop at a time.</p>
+        </div>
+    </section>
+
+    <!-- Our Mission Section -->
+    <div class="container">
+        <div class="section-title">
+            <h3><i class="fas fa-bullseye mr-2"></i>Our Mission</h3>
+        </div>
+        
+        <div class="info-card">
+            <p class="text-center">Hemo Hub is dedicated to creating a seamless platform that connects blood donors with those in critical need. Our mission is to save lives by making blood donation accessible, efficient, and impactful.</p>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="container">
+        <div class="section-title">
+            <h3><i class="fas fa-users mr-2"></i>Our Team</h3>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4 team-member">
+                <img src="team1.jpg" alt="Team Member 1">
+                <h4>Dr. Rahul Sharma</h4>
+                <p>Founder & CEO</p>
+            </div>
+            <div class="col-md-4 team-member">
+                <img src="team2.jpg" alt="Team Member 2">
+                <h4>Priya Desai</h4>
+                <p>Operations Director</p>
+            </div>
+            <div class="col-md-4 team-member">
+                <img src="team3.jpg" alt="Team Member 3">
+                <h4>Vikram Reddy</h4>
+                <p>Technology Lead</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form Section -->
+    <div class="container">
+        <div class="section-title">
+            <h3><i class="fas fa-envelope mr-2"></i>Contact Us</h3>
+            <p class="text-muted">Have questions or want to get involved? Reach out to us!</p>
+        </div>
+      
+        <div class="form-container">
+            <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name"><i class="fas fa-user mr-1"></i> Full Name:</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope mr-1"></i> Email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject"><i class="fas fa-heading mr-1"></i> Subject:</label>
+                    <input type="text" class="form-control" id="subject" placeholder="Enter message subject" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message"><i class="fas fa-comment mr-1"></i> Message:</label>
+                    <textarea class="form-control" id="message" rows="5" placeholder="Enter your message" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    <i class="fas fa-paper-plane mr-1"></i> Send Message
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h2>About Us</h2>
+                <p>Hemo Hub is dedicated to connecting blood donors with those in need, ensuring timely access to safe and life-saving blood</p>
+                <a href="About.html" class="btn btn-outline-light btn-sm mt-2">Learn More</a>
+            </div>
+            <div class="footer-section">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="Donor.html">Become a Donor</a></li>
+                    <li><a href="BloodAvailability.html">Find Blood</a></li>
+                    <li><a href="Receiver.html">Request Blood</a></li>
+                    <li><a href="LifeSavers.html">Our Life Savers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h2>Contact Us</h2>
+                <p><i class="fas fa-map-marker-alt mr-2"></i>VIT,Bibwewadi,Pune,Maharashtra 411037</p>
+                <p><i class="fas fa-envelope mr-2"></i>hemohub@vit.edu</p>
+                <p><i class="fas fa-phone mr-2"></i>+91 87676 48894</p>
+            </div>
+            <div class="footer-section">
+                <h2>Connect With Us</h2>
+                <p>Follow us on social media for updates on blood donation camps and success stories.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copywrites">
+            <p>© 2025 Hemo Hub. Connecting Donors, Saving Lives.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.

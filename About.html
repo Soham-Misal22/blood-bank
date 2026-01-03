@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>About Us - Hemo Hub</title>
+   <link rel="HTML" href="Donor.html">
+   <link rel="HTML" href="Receiver.html">
+   <link rel="HTML" href="BloodAvailability.html">
+   <link rel="HTML" href="LifeSavers.html">
+   <link rel="HTML" href="About.html">
+   <link rel="HTML" href="Index.html">
+   <link rel="HTML" href="Botboy.html">
+   <link rel="stylesheet" href="Styles.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   <style>
+    :root {
+      --primary-color: #e53935;
+      --primary-dark: #c62828;
+      --secondary-color: #f5f5f5;
+      --text-dark: #333333;
+      --text-light: #ffffff;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text-dark);
+      background-color: #f9f9f9;
+    }
+    
+    .navbar {
+      background-color: var(--primary-color) !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 12px 20px;
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: white !important;
+    }
+    
+    .navbar-dark .navbar-nav .nav-link {
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    
+    .navbar-dark .navbar-nav .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .page-header {
+      background: linear-gradient(135deg, #e53935 0%, #e35d5b 100%);
+      color: white;
+      padding: 40px 0;
+      border-radius: 0 0 20px 20px;
+      margin-bottom: 40px;
+    }
+    
+    .about-content {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+    
+    .affiliate-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    
+    .affiliate-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .affiliate-card a {
+      display: block;
+      color: var(--text-dark);
+      text-decoration: none;
+      padding: 20px;
+      transition: all 0.3s;
+    }
+    
+    .affiliate-card a:hover {
+      color: var(--primary-color);
+    }
+    
+    .affiliate-card .card-icon {
+      margin-right: 15px;
+      color: var(--primary-color);
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 30px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 70%;
+      height: 3px;
+      background-color: var(--primary-color);
+      margin: 8px 0 0;
+    }
+    
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 0 0;
+      margin-top: 60px;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+    
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-section a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-section a:hover {
+      color: var(--primary-color);
+    }
+    
+    .copywrites {
+      background-color: #222;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 20px;
+    }
+    
+    .social-icons {
+      margin-top: 15px;
+    }
+    
+    .social-icons a {
+      display: inline-block;
+      margin-right: 15px;
+      font-size: 1.5rem;
+      color: #ddd;
+      transition: all 0.3s;
+    }
+    
+    .social-icons a:hover {
+      color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+   </style>
+</head>
+<body>
+   <!-- Navigation Bar -->
+   <nav class="navbar navbar-expand-md navbar-dark">
+       <div class="container">
+           <a class="navbar-brand" href="Index.html">
+               <i class="fas fa-heartbeat mr-2"></i>Hemo Hub
+           </a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+               <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="collapsibleNavbar">
+               <ul class="navbar-nav ml-auto">
+                   <li class="nav-item">
+                       <a class="nav-link" href="Index.html"><i class="fas fa-home mr-1"></i> Home</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="Donor.html"><i class="fas fa-hand-holding-heart mr-1"></i> Donor</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="BloodAvailability.html"><i class="fas fa-tint mr-1"></i> Blood Availability</a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link" href="Receiver.html"><i class="fas fa-user mr-1"></i> Receiver</a>
+                   </li>
+                   <li class="nav-item active">
+                       <a class="nav-link" href="About.html"><i class="fas fa-info-circle mr-1"></i> About</a>
+                   </li>
+               </ul>
+           </div>
+       </div>
+   </nav>
+
+   <!-- Page Header -->
+   <section class="page-header text-center">
+       <div class="container">
+           <h1><i class="fas fa-info-circle mr-2"></i>About Us</h1>
+           <p>Learn more about our mission, vision, and the impact we're making</p>
+       </div>
+   </section>
+
+   <!-- About Content -->
+   <div class="container">
+       <div class="about-content">
+           <h3 class="section-title">Our Purpose</h3>
+           <p>
+            The Blood Bank Management System is designed to efficiently manage and streamline the process of blood donation and transfusion by collecting and organizing data of both donors and recipients. This website serves as a platform where individuals can register as donors to contribute to saving lives, while those in need of blood can easily submit their requests.
+           </p>
+           <p>
+            One of the key features of this system is blood availability tracking, which displays real-time availability of different blood groups, making it easier for recipients to find suitable donors. Additionally, general users can request blood online by filling out a simple form, ensuring quick and hassle-free access to blood when needed. The system is managed by an admin, who has the authority to add, delete, and modify donor and recipient details, maintaining accurate and updated records for better management.
+           </p>
+           <p>
+               Additionally, users can contact or email to us get information about the guidelines for donating blood and to receive blood.
+           </p>
+       </div>
+
+       <!-- Stats Section -->
+       <div class="row stats-container mb-5">
+           <div class="col-md-3 col-6 stat-item">
+               <span class="stat-number">5000+</span>
+               <span class="stat-label">Donors</span>
+           </div>
+           <div class="col-md-3 col-6 stat-item">
+               <span class="stat-number">3200+</span>
+               <span class="stat-label">Lives Saved</span>
+           </div>
+           <div class="col-md-3 col-6 stat-item">
+               <span class="stat-number">150+</span>
+               <span class="stat-label">Camps Organized</span>
+           </div>
+           <div class="col-md-3 col-6 stat-item">
+               <span class="stat-number">7</span>
+               <span class="stat-label">Partner Organizations</span>
+           </div>
+       </div>
+
+       <!-- Affiliates Section -->
+       <div class="affiliate-section">
+        <h3 class="section-title"><i class="fas fa-handshake mr-2"></i>Affiliated Organizations</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="affiliate-card">
+                    <a href="#">
+                        <i class="fas fa-bus card-icon"></i>National AIDS Control Organisation
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="affiliate-card">
+                    <a href="#">
+                        <i class="fas fa-hands-helping card-icon"></i>Rotary Blood Bank
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="affiliate-card">
+                    <a href="#">
+                        <i class="fas fa-tint card-icon"></i>Indian Red Cross Society
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="affiliate-card">
+                    <a href="#">
+                        <i class="fas fa-users card-icon"></i>Humanity Organisation
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="affiliate-card">
+                    <a href="#">
+                        <i class="fas fa-hospital card-icon"></i>Pune Blood Bank
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="affiliate-card">
+                    <a href="#">
+                        <i class="fas fa-hand-holding-heart card-icon"></i>Helping Hand Organisation
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="affiliate-card">
+                    <a href="#">
+                        <i class="fas fa-building card-icon"></i>Tata Blood Donation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+   <!-- Footer -->
+   <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h2>About Us</h2>
+                <p>Hemo Hub is dedicated to connecting blood donors with those in need, ensuring timely access to safe and life-saving blood</p>
+                <a href="About.html" class="btn btn-outline-light btn-sm mt-2">Learn More</a>
+            </div>
+            <div class="footer-section">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="Donor.html">Become a Donor</a></li>
+                    <li><a href="BloodAvailability.html">Find Blood</a></li>
+                    <li><a href="Receiver.html">Request Blood</a></li>
+                    <li><a href="LifeSavers.html">Our Life Savers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h2>Contact Us</h2>
+                <p><i class="fas fa-map-marker-alt mr-2"></i>VIT,Bibwewadi,Pune,Maharashtra 411037</p>
+                <p><i class="fas fa-envelope mr-2"></i>hemohub@vit.edu</p>
+                <p><i class="fas fa-phone mr-2"></i>+91 87676 48894</p>
+            </div>
+            <div class="footer-section">
+                <h2>Connect With Us</h2>
+                <p>Follow us on social media for updates on blood donation camps and success stories.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copywrites">
+            <p>VIT,Bibwewadi,Pune,Maharashtra 411037</p>
+        </div>
+   </footer>
+
+   <!-- Scripts -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>
